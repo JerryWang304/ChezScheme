@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?define ProductName = "Chez Scheme Version $(var.Version)"?>
+<?define Manufacturer = "Cisco Systems, Inc."?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product
+      Name="$(var.ProductName)"
+      Id="*"
+      UpgradeCode="e183c83e-1216-446f-bee1-f25db3297efa"
+      Language="1033"
+      Codepage="1252"
+      Version="$(var.Version)"
+      Manufacturer="$(var.Manufacturer)">
+    <Package
+        Keywords="Installer"
+        Description="$(var.ProductName) Installer"
+        Manufacturer="$(var.Manufacturer)"
+        InstallScope="perMachine"
+        Languages="1033"
+        Compressed="yes"
+        SummaryCodepage="1252"/>
+    <MediaTemplate EmbedCab="yes"/>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder" Name="Program Files">
+        <Directory Id="D_root" Name="$(var.ProductName)">
+          <Directory Id="D_bin" Name="bin"/>
+          <Directory Id="D_boot" Name="boot"/>
+          <Directory Id="D_examples" Name="examples"/>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Feature Id="Complete" Level="1">
+      <ComponentGroupRef Id="CG_examples"/>
+      <ComponentGroupRef Id="CG_a6nt"/>
+    </Feature>
+    <Icon Id="cs.ico" SourceFile="../c/cs.ico"/>
+    <UIRef Id="WixUI_Minimal"/>
+    <UIRef Id="WixUI_ErrorProgressText"/>
+  </Product>
+</Wix>

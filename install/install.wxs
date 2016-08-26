@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <Bundle Name="Chez Scheme Version $(var.Version)"
+          Version="$(var.Version)"
+          Manufacturer="Cisco Systems, Inc."
+          Copyright="© 2016 Cisco Systems, Inc."
+          IconSourceFile="../c/cs.ico"
+          UpgradeCode="d2b4af50-3aae-4431-9374-777666e0d9de">
+    <BootstrapperApplicationRef
+        Id="WixStandardBootstrapperApplication.HyperlinkLicense">
+      <bal:WixStandardBootstrapperApplication
+          LicenseUrl="http://www.apache.org/licenses/LICENSE-2.0"
+          LogoFile="cs.png"
+          SuppressOptionsUI="yes"/>
+    </BootstrapperApplicationRef>
+    <Chain>
+      <MsiPackage SourceFile="cs.msi"/>
+    </Chain>
+  </Bundle>
+</Wix>
